@@ -2,7 +2,7 @@
 
 ![SQL](https://img.shields.io/badge/SQL-MySQL%208.0%2B-4479A1?logo=mysql&logoColor=white) ![License](https://img.shields.io/badge/license-BlackCat%20Proprietary-red) ![Status](https://img.shields.io/badge/status-stable-informational) ![Generated](https://img.shields.io/badge/generated-from%20schema--map-blue)
 
-> Schema package for table **system_jobs** (repo: $slug).
+> Schema package for table **system_jobs** (repo: `system-jobs`).
 
 ## Files
 ```
@@ -37,7 +37,7 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/001_table.sql
 | id | BIGINT UNSIGNED | — | — | AUTO_INCREMENT, PK |
 | job_type | VARCHAR(100) | NO | — |  |
 | payload | JSON | YES | — |  |
-| status | ENUM(''pending'',''processing'',''done'',''failed'') | NO | '' |  |
+| status | ENUM('pending','processing','done','failed') | NO | '' |  |
 | retries | INT | NO | 0 |  |
 | scheduled_at | DATETIME(6) | YES | — |  |
 | started_at | DATETIME(6) | YES | — |  |
@@ -52,17 +52,17 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/001_table.sql
 ```mermaid
 erDiagram
   SYSTEM_JOBS {
-    BIGINT id PK
-    VARCHAR(100) job_type
+    INT id PK
+    VARCHAR job_type
     JSON payload
-    ENUM(''pending'',''processing'',''done'',''failed'') status
+    ENUM status
     INT retries
-    DATETIME(6) scheduled_at
-    DATETIME(6) started_at
-    DATETIME(6) finished_at
-    TEXT error
-    DATETIME(6) created_at
-    DATETIME(6) updated_at
+    DATETIME scheduled_at
+    DATETIME started_at
+    DATETIME finished_at
+    VARCHAR error
+    DATETIME created_at
+    DATETIME updated_at
   }
 ```
 
