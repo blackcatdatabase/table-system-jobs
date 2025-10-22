@@ -39,7 +39,7 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/001_table.sql
 | id | BIGINT UNSIGNED | — | — | AUTO_INCREMENT, PK |
 | job_type | VARCHAR(100) | NO | — |  |
 | payload | JSON | YES | — |  |
-| status | ENUM('pending','processing','done','failed') | NO | '' |  |
+| status | ENUM('pending','processing','done','failed') | NO | 'pending' |  |
 | retries | INT | NO | 0 |  |
 | scheduled_at | DATETIME(6) | YES | — |  |
 | started_at | DATETIME(6) | YES | — |  |

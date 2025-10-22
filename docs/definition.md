@@ -9,7 +9,7 @@ Asynchronous background jobs (generic).
 | id | BIGINT UNSIGNED | — | — | Surrogate primary key. |  |
 | job_type | VARCHAR(100) | NO | — | Job type key. |  |
 | payload | JSON | YES | — | JSON payload. |  |
-| status | ENUM('pending','processing','done','failed') | NO | ''pending'' | Processing status. | enum: pending, processing, done, failed |
+| status | ENUM('pending','processing','done','failed') | NO | 'pending' | Processing status. | enum: pending, processing, done, failed |
 | retries | INT | NO | 0 | Retry count. |  |
 | scheduled_at | DATETIME(6) | YES | — | Schedule time (UTC). |  |
 | started_at | DATETIME(6) | YES | — | Start time (UTC). |  |

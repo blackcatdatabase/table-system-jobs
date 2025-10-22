@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS system_jobs (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   job_type VARCHAR(100) NOT NULL,
   payload JSON NULL,
-  status ENUM(''pending'',''processing'',''done'',''failed'') NOT NULL DEFAULT ''pending'',
+  status ENUM('pending','processing','done','failed') NOT NULL DEFAULT 'pending',
   retries INT NOT NULL DEFAULT 0,
   scheduled_at DATETIME(6) NULL,
   started_at DATETIME(6) NULL,
