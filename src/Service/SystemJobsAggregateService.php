@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace BlackCat\Database\Packages\SystemJobs\Service;
 
-use BlackCat\Core\Database\Database;
+use BlackCat\Core\Database;
 use BlackCat\Database\Packages\SystemJobs\Dto\SystemJobDto;
 use BlackCat\Database\Packages\SystemJobs\Mapper\SystemJobDtoMapper;
 use BlackCat\Database\Packages\SystemJobs\Repository\SystemJobRepository;
