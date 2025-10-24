@@ -6,7 +6,7 @@ namespace BlackCat\Database\Packages\SystemJobs;
 /**
  * Bezpečný builder WHERE/ORDER/LIMIT.
  * - whitelist filtrů: [ 'id', 'job_type', 'payload', 'status', 'retries', 'scheduled_at', 'started_at', 'finished_at', 'error', 'created_at', 'updated_at' ]
- * - whitelist pro LIKE hledání: [ 'job_type', 'error' ]
+ * - whitelist pro LIKE hledání: [ 'job_type', 'status', 'error' ]
  */
 final class Criteria {
     /** @var array<string,mixed> */
@@ -61,7 +61,7 @@ final class Criteria {
 
         // fulltext/LIKE (přes whitelist)
         if ($this->search !== null) {
-            $searchCols = [ 'job_type', 'error' ];
+            $searchCols = [ 'job_type', 'status', 'error' ];
             $likeParts = [];
             foreach ($searchCols as $i=>$c) {
                 if ($c === '') continue;

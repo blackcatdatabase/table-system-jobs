@@ -6,7 +6,7 @@ namespace BlackCat\Database\Packages\SystemJobs;
 final class Definitions {
     // --- základní metadata ---
     public static function table(): string { return 'system_jobs'; }
-    public static function contractView(): string { return 'v_system_jobs_contract'; }
+    public static function contractView(): string { return 'vw_system_jobs'; }
     /** @return string[] */
     public static function columns(): array { return [ 'id', 'job_type', 'payload', 'status', 'retries', 'scheduled_at', 'started_at', 'finished_at', 'error', 'created_at', 'updated_at' ]; }
     public static function pk(): string { return 'id'; }
