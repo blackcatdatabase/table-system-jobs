@@ -1,4 +1,4 @@
--- Auto-generated from schema-views-postgres.psd1 (map@38d5403)
+-- Auto-generated from schema-views-postgres.psd1 (map@c5e4097)
 -- engine: postgres
 -- table:  system_jobs
 -- Contract view for [system_jobs]
@@ -14,5 +14,6 @@ SELECT
   finished_at,
   error,
   created_at,
-  updated_at
+  updated_at,
+  version
 FROM system_jobs;

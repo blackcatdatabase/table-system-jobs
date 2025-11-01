@@ -1,8 +1,8 @@
--- Auto-generated from schema-views-mysql.psd1 (map@38d5403)
+-- Auto-generated from schema-views-mysql.psd1 (map@c5e4097)
 -- engine: mysql
 -- table:  system_jobs
 -- Contract view for [system_jobs]
-CREATE OR REPLACE SQL SECURITY INVOKER VIEW vw_system_jobs AS
+CREATE OR REPLACE ALGORITHM=MERGE SQL SECURITY INVOKER VIEW vw_system_jobs AS
 SELECT
   id,
   job_type,
@@ -14,5 +14,6 @@ SELECT
   finished_at,
   error,
   created_at,
-  updated_at
+  updated_at,
+  version
 FROM system_jobs;
