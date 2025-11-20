@@ -1,4 +1,4 @@
--- Auto-generated from schema-views-postgres.psd1 (map@9d3471b)
+-- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
 -- engine: postgres
 -- table:  system_jobs_metrics
 -- Metrics for [system_jobs]
@@ -14,7 +14,7 @@ FROM system_jobs
 GROUP BY job_type, status
 ORDER BY job_type, status;
 
--- Auto-generated from schema-views-postgres.psd1 (map@9d3471b)
+-- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
 -- engine: postgres
 -- table:  system_jobs
 -- Contract view for [system_jobs]

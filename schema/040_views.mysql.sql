@@ -1,4 +1,4 @@
--- Auto-generated from schema-views-mysql.psd1 (map@db2f8b8)
+-- Auto-generated from schema-views-mysql.psd1 (map@62c9c93)
 -- engine: mysql
 -- table:  system_jobs_metrics
 -- Metrics for [system_jobs]
@@ -14,7 +14,7 @@ FROM system_jobs
 GROUP BY job_type, status
 ORDER BY job_type, status;
 
--- Auto-generated from schema-views-mysql.psd1 (map@db2f8b8)
+-- Auto-generated from schema-views-mysql.psd1 (map@62c9c93)
 -- engine: mysql
 -- table:  system_jobs
 -- Contract view for [system_jobs]
