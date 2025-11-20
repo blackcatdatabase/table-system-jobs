@@ -11,9 +11,14 @@ CREATE TABLE IF NOT EXISTS system_jobs (
   started_at TIMESTAMPTZ(6) NULL,
   finished_at TIMESTAMPTZ(6) NULL,
   error TEXT NULL,
+  unique_key_hash CHAR(64) NULL,
+  unique_key_version VARCHAR(64) NULL,
+  locked_until TIMESTAMPTZ(6) NULL,
+  locked_by VARCHAR(100) NULL,
   created_at TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   updated_at TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   version INTEGER NOT NULL DEFAULT 0,
   CONSTRAINT chk_system_jobs_version CHECK (version >= 0),
-  CONSTRAINT chk_system_jobs_status CHECK (status IN ('pending','processing','done','failed'))
+  CONSTRAINT chk_system_jobs_status CHECK (status IN ('pending','processing','done','failed')),
+  CONSTRAINT chk_system_jobs_retries CHECK (retries >= 0)
 );

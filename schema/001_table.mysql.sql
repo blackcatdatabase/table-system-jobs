@@ -1,4 +1,4 @@
--- Auto-generated from schema-map-mysql.psd1 (map@db2f8b8)
+-- Auto-generated from schema-map-mysql.psd1 (map@734a489)
 -- engine: mysql
 -- table:  system_jobs
 CREATE TABLE IF NOT EXISTS system_jobs (
@@ -11,8 +11,13 @@ CREATE TABLE IF NOT EXISTS system_jobs (
   started_at DATETIME(6) NULL,
   finished_at DATETIME(6) NULL,
   error TEXT NULL,
+  unique_key_hash CHAR(64) NULL,
+  unique_key_version VARCHAR(64) NULL,
+  locked_until DATETIME(6) NULL,
+  locked_by VARCHAR(100) NULL,
   created_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   updated_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   version INT UNSIGNED NOT NULL DEFAULT 0,
-  INDEX idx_system_jobs_status_sched (status, scheduled_at)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  INDEX idx_system_jobs_status_sched (status, scheduled_at),
+  INDEX idx_system_jobs_locked_until (locked_until)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
