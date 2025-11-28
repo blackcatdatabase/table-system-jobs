@@ -17,7 +17,7 @@ use BlackCat\Database\Support\DtoHydrator;
 final class SystemJobDtoMapper
 {
     /** @var array<string,string> Column -> DTO property */
-    private const COL_TO_PROP = [ 'job_type' => 'jobType', 'scheduled_at' => 'scheduledAt', 'started_at' => 'startedAt', 'finished_at' => 'finishedAt', 'unique_key_hash' => 'uniqueKeyHash', 'unique_key_version' => 'uniqueKeyVersion', 'locked_until' => 'lockedUntil', 'locked_by' => 'lockedBy', 'created_at' => 'createdAt', 'updated_at' => 'updatedAt' ];
+    private const COL_TO_PROP = [ 'id' => 'id', 'job_type' => 'jobType', 'payload' => 'payload', 'status' => 'status', 'retries' => 'retries', 'scheduled_at' => 'scheduledAt', 'started_at' => 'startedAt', 'finished_at' => 'finishedAt', 'error' => 'error', 'unique_key_hash' => 'uniqueKeyHash', 'unique_key_version' => 'uniqueKeyVersion', 'locked_until' => 'lockedUntil', 'locked_by' => 'lockedBy', 'created_at' => 'createdAt', 'updated_at' => 'updatedAt', 'version' => 'version' ];
 
     /** @var string[] */
     private const BOOL_COLS   = [];

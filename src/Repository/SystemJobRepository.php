@@ -43,7 +43,7 @@ final class SystemJobRepository implements RepoContract, KeysetRepoContract
 
     // --- INSERT / BULK -------------------------------------------------------
 
-    public function insert(array #[\SensitiveParameter] $row): void {
+    public function insert(#[\SensitiveParameter] array $row): void {
         $row = $this->filterCols($this->normalizeInputRow($row));
         if (!$row) return;
 
@@ -107,13 +107,13 @@ final class SystemJobRepository implements RepoContract, KeysetRepoContract
     }
 
     /** Standard upsert – preserves soft-delete (no revive). */
-    public function upsert(array #[\SensitiveParameter] $row): void
+    public function upsert(#[\SensitiveParameter] array $row): void
     {
         $this->doUpsert($row, false);
     }
 
     /** Upsert that revives soft-delete (sets deleted_at = NULL on conflict). */
-    public function upsertRevive(array #[\SensitiveParameter] $row): void
+    public function upsertRevive(#[\SensitiveParameter] array $row): void
     {
         $this->doUpsert($row, true);
     }
@@ -216,7 +216,7 @@ final class SystemJobRepository implements RepoContract, KeysetRepoContract
 
     // --- UPDATE / DELETE / RESTORE ------------------------------------------
 
-    public function updateById(int|string|array $id, array #[\SensitiveParameter] $row): int {
+    public function updateById(int|string|array $id, #[\SensitiveParameter] array $row): int {
         $row = $this->normalizeInputRow($row);
 
         $tbl   = Ident::qi($this->db, Definitions::table());
@@ -428,7 +428,7 @@ final class SystemJobRepository implements RepoContract, KeysetRepoContract
         $sql = "SELECT * FROM {$tbl} WHERE {$where}";
         if ($guard !== '1=1') { $sql .= ' AND ' . $guard; }
 
-        $dialect = $this->db->getDialect(); // 'postgres' | 'mysql' | 'mariadb' ...
+        $dialect = $this->db->dialect(); // 'postgres' | 'mysql' | 'mariadb' ...
         $for = 'FOR UPDATE';
         if ($strength === 'share') {
             if ($dialect === 'postgres' || $dialect === 'mysql') { $for = 'FOR SHARE'; }
@@ -474,33 +474,18 @@ final class SystemJobRepository implements RepoContract, KeysetRepoContract
     // === Generated unique helpers (per table UNIQUE/PK) ===
     
     /** @return array<string,mixed>|\BlackCat\Database\Packages\SystemJobs\Dto\SystemJobDto|null */
-    public function getBy64(mixed $64, bool $asDto = false): array|\BlackCat\Database\Packages\SystemJobs\Dto\SystemJobDto|null {
-        $row = $this->getByUnique([ '64' => $64 ]);
+    public function getBy64(mixed $c64, bool $asDto = false): array|\BlackCat\Database\Packages\SystemJobs\Dto\SystemJobDto|null {
+        $row = $this->getByUnique([ '64' => $c64 ]);
         if (!$asDto || !$row) return $row;
         return \BlackCat\Database\Packages\SystemJobs\Mapper\SystemJobDtoMapper::fromRow($row);
     }
-    public function existsBy64(mixed $64): bool {
+    public function existsBy64(mixed $c64): bool {
         $where = 't.' . Ident::q($this->db, '64') . ' = :uniq_64';
-        return $this->exists($where, [ 'uniq_64' => $64 ]);
+        return $this->exists($where, [ 'uniq_64' => $c64 ]);
     }
     /** @return int|string|null */
-    public function getIdBy64(mixed $64) {
-        $row = $this->getBy64($64);
-        return $row ? ($row['id'] ?? null) : null;
-    }
-    /** @return array<string,mixed>|\BlackCat\Database\Packages\SystemJobs\Dto\SystemJobDto|null */
-    public function getById(int $id, bool $asDto = false): array|\BlackCat\Database\Packages\SystemJobs\Dto\SystemJobDto|null {
-        $row = $this->getByUnique([ 'id' => $id ]);
-        if (!$asDto || !$row) return $row;
-        return \BlackCat\Database\Packages\SystemJobs\Mapper\SystemJobDtoMapper::fromRow($row);
-    }
-    public function existsById(int $id): bool {
-        $where = 't.' . Ident::q($this->db, 'id') . ' = :uniq_id';
-        return $this->exists($where, [ 'uniq_id' => $id ]);
-    }
-    /** @return int|string|null */
-    public function getIdById(int $id) {
-        $row = $this->getById($id);
+    public function getIdBy64(mixed $c64) {
+        $row = $this->getBy64($c64);
         return $row ? ($row['id'] ?? null) : null;
     }
 
