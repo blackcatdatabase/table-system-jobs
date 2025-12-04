@@ -57,7 +57,7 @@ final class Definitions {
     }
 
     /** @return array<int,array<int,string>> list of unique keys */
-    public static function uniqueKeys(): array { return [ [ 'id' ] ]; }
+    public static function uniqueKeys(): array { return [ [ 'unique_key_hash' ], [ 'id' ] ]; }
 
     /** @return string[] JSON columns for casts/operations */
     public static function jsonColumns(): array { return [ 'payload' ]; }

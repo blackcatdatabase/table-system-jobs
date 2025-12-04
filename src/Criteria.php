@@ -38,7 +38,7 @@ final class Criteria extends BaseCriteria
     /** Columns used for full-text LIKE/ILIKE searches. */
     protected function searchable(): array
     {
-        return [ 'job_type', 'error', 'unique_key_hash', 'unique_key_version', 'locked_by' ];
+        return [ 'job_type', 'status', 'error', 'unique_key_hash', 'unique_key_version', 'locked_by' ];
     }
 
 /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
