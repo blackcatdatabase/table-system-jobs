@@ -591,19 +591,4 @@ use OrderByTools, PkTools, RepositoryHelpers;
 
     // === Generated unique helpers (per table UNIQUE/PK) ===
     
-    /** @return array<string,mixed>|\BlackCat\Database\Packages\SystemJobs\Dto\SystemJobDto|null */
-    public function getByUniqueKeyHash(string $uniqueKeyHash, bool $asDto = false): array|\BlackCat\Database\Packages\SystemJobs\Dto\SystemJobDto|null {
-        return $this->getByUnique([ 'unique_key_hash' => $uniqueKeyHash ], $asDto);
-    }
-    public function existsByUniqueKeyHash(string $uniqueKeyHash): bool {
-        $where = 't.' . Ident::q($this->db, 'unique_key_hash') . ' = :uniq_unique_key_hash';
-        return $this->exists($where, [ 'uniq_unique_key_hash' => $uniqueKeyHash ]);
-    }
-    /** @return int|string|null */
-    public function getIdByUniqueKeyHash(string $uniqueKeyHash) {
-        $row = $this->getByUniqueKeyHash($uniqueKeyHash, false);
-        if (!is_array($row)) { return null; }
-        return $row['id'] ?? null;
-    }
-
 }
