@@ -5,17 +5,17 @@ Asynchronous background jobs (generic).
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | error | TEXT | YES |  | Last error message. |
-| finished_at | TIMESTAMPTZ(6) | YES |  | Finish time (UTC). |
+| finished_at | DATETIME(6) | YES |  | Finish time (UTC). |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | job_type | VARCHAR(100) | NO |  | Job type key. |
-| payload | JSONB | YES |  | JSON payload. |
-| retries | INTEGER | NO | 0 | Retry count. |
-| scheduled_at | TIMESTAMPTZ(6) | YES |  | Schedule time (UTC). |
-| started_at | TIMESTAMPTZ(6) | YES |  | Start time (UTC). |
-| status | TEXT | NO | pending | Processing status. (enum: pending, processing, done, failed) |
-| updated_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Update timestamp (UTC). |
+| payload | JSON | YES |  | JSON payload. |
+| retries | INT | NO | 0 | Retry count. |
+| scheduled_at | DATETIME(6) | YES |  | Schedule time (UTC). |
+| started_at | DATETIME(6) | YES |  | Start time (UTC). |
+| status | ENUM('pending','processing','done','failed') | NO | pending | Processing status. (enum: pending, processing, done, failed) |
+| updated_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Update timestamp (UTC). |
 
 ## Engine Details
 
@@ -40,7 +40,7 @@ Indexes:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_system_jobs | mysql | algorithm=MERGE, security=INVOKER | [packages\system-jobs\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/system-jobs/schema/040_views.mysql.sql) |
-| vw_system_jobs_metrics | mysql | algorithm=TEMPTABLE, security=INVOKER | [packages\system-jobs\schema\040_views_joins.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/system-jobs/schema/040_views_joins.mysql.sql) |
-| vw_system_jobs | postgres |  | [packages\system-jobs\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/system-jobs/schema/040_views.postgres.sql) |
-| vw_system_jobs_metrics | postgres |  | [packages\system-jobs\schema\040_views_joins.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/system-jobs/schema/040_views_joins.postgres.sql) |
+| vw_system_jobs | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_system_jobs_metrics | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
+| vw_system_jobs | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
+| vw_system_jobs_metrics | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
