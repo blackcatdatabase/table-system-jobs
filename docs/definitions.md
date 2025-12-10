@@ -5,16 +5,16 @@ Asynchronous background jobs (generic).
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| error | TEXT | YES |  | Last error message. |
-| finished_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Finish time (UTC). |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | job_type | VARCHAR(100) | NO |  | Job type key. |
 | payload | mysql: JSON / postgres: JSONB | YES |  | JSON payload. |
+| status | mysql: ENUM('pending','processing','done','failed') / postgres: TEXT | NO | pending | Processing status. (enum: pending, processing, done, failed) |
 | retries | mysql: INT / postgres: INTEGER | NO | 0 | Retry count. |
 | scheduled_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Schedule time (UTC). |
 | started_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Start time (UTC). |
-| status | mysql: ENUM('pending','processing','done','failed') / postgres: TEXT | NO | pending | Processing status. (enum: pending, processing, done, failed) |
+| finished_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Finish time (UTC). |
+| error | TEXT | YES |  | Last error message. |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | updated_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Update timestamp (UTC). |
 
 ## Engine Details
