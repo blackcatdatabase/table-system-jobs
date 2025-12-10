@@ -5,17 +5,17 @@ Asynchronous background jobs (generic).
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | error | TEXT | YES |  | Last error message. |
-| finished_at | DATETIME(6) | YES |  | Finish time (UTC). |
+| finished_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Finish time (UTC). |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | job_type | VARCHAR(100) | NO |  | Job type key. |
-| payload | JSON | YES |  | JSON payload. |
-| retries | INT | NO | 0 | Retry count. |
-| scheduled_at | DATETIME(6) | YES |  | Schedule time (UTC). |
-| started_at | DATETIME(6) | YES |  | Start time (UTC). |
-| status | ENUM('pending','processing','done','failed') | NO | pending | Processing status. (enum: pending, processing, done, failed) |
-| updated_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Update timestamp (UTC). |
+| payload | mysql: JSON / postgres: JSONB | YES |  | JSON payload. |
+| retries | mysql: INT / postgres: INTEGER | NO | 0 | Retry count. |
+| scheduled_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Schedule time (UTC). |
+| started_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | YES |  | Start time (UTC). |
+| status | mysql: ENUM('pending','processing','done','failed') / postgres: TEXT | NO | pending | Processing status. (enum: pending, processing, done, failed) |
+| updated_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Update timestamp (UTC). |
 
 ## Engine Details
 
