@@ -1,0 +1,60 @@
+{
+  "tables": {
+    "system_jobs": {
+      "columns": {
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "error": {
+          "strategy": "passthrough"
+        },
+        "finished_at": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "job_type": {
+          "strategy": "passthrough"
+        },
+        "locked_by": {
+          "strategy": "passthrough"
+        },
+        "locked_until": {
+          "strategy": "passthrough"
+        },
+        "payload": {
+          "strategy": "passthrough"
+        },
+        "retries": {
+          "strategy": "passthrough"
+        },
+        "scheduled_at": {
+          "strategy": "passthrough"
+        },
+        "started_at": {
+          "strategy": "passthrough"
+        },
+        "status": {
+          "strategy": "passthrough"
+        },
+        "unique_key_hash": {
+          "context": "db.hmac.system_jobs.unique_key_hash",
+          "encoding": "hex",
+          "key_version_column": "unique_key_version",
+          "strategy": "hmac",
+          "write_key_version": true
+        },
+        "unique_key_version": {
+          "strategy": "passthrough"
+        },
+        "updated_at": {
+          "strategy": "passthrough"
+        },
+        "version": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
