@@ -41,11 +41,11 @@ final class Criteria extends BaseCriteria
         return [ 'job_type', 'error', 'unique_key_hash', 'unique_key_version', 'locked_by' ];
     }
 
-/** Columns allowed in ORDER BY (falls back to filterable() when empty). */
-protected function sortable(): array
-{
-    return [ 'id', 'job_type', 'status', 'retries', 'scheduled_at', 'started_at', 'finished_at', 'error', 'unique_key_hash', 'unique_key_version', 'locked_until', 'locked_by', 'created_at', 'updated_at', 'version' ];
-}
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        return [ 'id', 'job_type', 'status', 'retries', 'scheduled_at', 'started_at', 'finished_at', 'error', 'unique_key_hash', 'unique_key_version', 'locked_until', 'locked_by', 'created_at', 'updated_at', 'version' ];
+    }
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
